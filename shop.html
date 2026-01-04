@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop — Noir Fragrances</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        body {
+            background: #050505;
+            overflow-x: hidden
+        }
+
+        .gold {
+            color: #d4af37
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .04);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 215, 0, .15)
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #caa135, #e6c76a);
+            color: #111
+        }
+
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #e6c76a, #f3dd9a)
+        }
+
+        .product-card {
+            transition: .35s;
+            cursor: pointer
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 18px 36px rgba(212, 175, 55, .15)
+        }
+
+        /* CART DRAWER */
+        #cartDrawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            height: 100%;
+            width: 380px;
+            background: #0b0b0b;
+            border-left: 1px solid rgba(255, 215, 0, .2);
+            transition: .4s;
+            z-index: 999
+        }
+
+        #cartDrawer.open {
+            right: 0
+        }
+
+        /* product image zoom */
+        .preview img {
+            transition: .4s
+        }
+
+        .preview:hover img {
+            transform: scale(1.05)
+        }
+    </style>
+</head>
+
+<body class="text-gray-200">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <!-- LEFT: Mobile menu button -->
+            <button id="menuBtn" class="md:hidden text-gray-300 text-xl">
+                ☰
+            </button>
+
+            <!-- CENTER: Logo -->
+            <div class="flex items-center gap-3">
+                <img src="imgs/logo.png" class="w-10 h-10 object-contain" alt="Noir Logo">
+                <span class="text-2xl font-bold tracking-wide gold">NOIR</span>
+            </div>
+
+            <!-- RIGHT: Desktop nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="shop.html" class="hover:text-white transition">Shop</a>
+
+                <button onclick="toggleCart()"
+                    class="flex items-center gap-2 glass px-4 py-2 rounded-xl hover:bg-white/10 transition">
+                    🛒 <span>Cart (<span id="cartCount">0</span>)</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- MOBILE NAV -->
+        <div id="mobileNav"
+            class="hidden md:hidden border-t border-white/10 px-6 pb-4 flex flex-col gap-3 text-gray-300">
+            <a href="index.html" class="py-2">Home</a>
+            <a href="shop.html" class="py-2">Shop</a>
+
+            <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl flex items-center gap-2 w-fit">
+                🛒 Cart (<span id="cartCountMobile">0</span>)
+            </button>
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="text-center py-14 px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-3 gold">Explore Our Collection</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+            Curated scents crafted for elegance and memory.
+        </p>
+    </section>
+
+    <!-- SEARCH + FILTER -->
+    <section class="px-8 md:px-16 mb-8">
+        <div class="glass rounded-2xl p-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+
+            <input id="search" class="glass px-4 py-2 rounded-xl text-sm w-full" placeholder="Search perfume...">
+
+            <select id="filter" class="glass px-4 py-2 rounded-xl text-sm w-full sm:w-auto">
+                <option value="all">All</option>
+                <option value="oud">Oud</option>
+                <option value="floral">Floral</option>
+                <option value="citrus">Citrus</option>
+            </select>
+
+        </div>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section class="px-8 md:px-16 pb-24">
+        <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"></div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div id="cartDrawer">
+        <div class="p-5 flex justify-between items-center border-b border-white/10">
+            <h3 class="gold text-xl font-bold">Your Cart</h3>
+            <button onclick="toggleCart()">✕</button>
+        </div>
+
+        <div id="cartItems" class="p-5 space-y-3 overflow-y-auto h-[70%]"></div>
+
+        <div class="p-5 border-t border-white/10">
+            <p class="flex justify-between mb-3">
+                <span>Total:</span>
+                <span class="gold font-semibold" id="cartTotal">$0</span>
+            </p>
+
+            <button class="btn-gold w-full py-3 rounded-xl" onclick="sendOrderWhatsApp()">
+                Send Order on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <footer class="glass px-10 md:px-16 py-12">
+        <div class="border-t border-white/10 pt-6 text-gray-500 text-sm flex justify-between">
+            <p>© 2026 Noir Fragrances</p>
+            <p>Privacy • Terms</p>
+        </div>
+    </footer>
+
+    <script>
+        /* ---------------- PRODUCTS ---------------- */
+        const products = [
+            {
+                name: "Noir Intense", price: 148, type: "oud",
+                img: "https://images.unsplash.com/photo-1607779097040-26d0b2fc8d43?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                name: "Velvet Bloom", price: 132, type: "floral",
+                img: "https://images.unsplash.com/photo-1592945403244-281fd123f8f9?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                name: "Midnight Echo", price: 139, type: "citrus",
+                img: "https://images.unsplash.com/photo-1594034488895-44b0d28df8ef?auto=format&fit=crop&w=600&q=80"
+            },
+        ];
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function renderProducts() {
+            const grid = document.getElementById("productGrid");
+            const search = document.getElementById("search").value.toLowerCase();
+            const filter = document.getElementById("filter").value;
+
+            grid.innerHTML = products
+                .filter(p => p.name.toLowerCase().includes(search)
+                    && (filter === "all" || p.type === filter))
+                .map(p => `
+      <div class="glass rounded-2xl p-6 product-card preview">
+        <img class="rounded-xl mb-4" src="${p.img}">
+        <h3 class="font-semibold text-lg mb-1">${p.name}</h3>
+        <p class="text-gray-400 text-sm mb-3">${p.type.toUpperCase()}</p>
+
+        <select class="glass px-3 py-2 rounded-xl text-sm mb-3"
+                onchange='this.dataset.size=this.value'>
+          <option value="30ml">30ml</option>
+          <option value="50ml">50ml</option>
+          <option value="100ml">100ml</option>
+        </select>
+
+        <div class="flex justify-between items-center">
+          <span class="gold font-semibold">$${p.price}</span>
+          <button class="btn-gold px-4 py-2 rounded-xl text-xs"
+            onclick='addToCart("${p.name}",${p.price}, this.previousElementSibling.dataset.size||"30ml")'>
+            Add
+          </button>
+        </div>
+      </div>`).join("");
+        }
+
+        document.getElementById("search").addEventListener("input", renderProducts);
+        document.getElementById("filter").addEventListener("change", renderProducts);
+
+        renderProducts();
+
+        /* ---------------- CART ---------------- */
+        function toggleCart() {
+            document.getElementById("cartDrawer").classList.toggle("open");
+        }
+
+        function addToCart(name, price, size) {
+            const existing = cart.find(i => i.name === name && i.size === size);
+            existing ? existing.qty++ : cart.push({ name, price, size, qty: 1 });
+            save();
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) cart.splice(index, 1);
+            save();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1); save();
+        }
+
+        function save() {
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+
+        function renderCart() {
+            const list = document.getElementById("cartItems");
+            const total = cart.reduce((a, b) => a + (b.price * b.qty), 0);
+
+            document.getElementById("cartTotal").innerText = "$" + total;
+            document.getElementById("cartCount").innerText =
+                cart.reduce((a, b) => a + b.qty, 0);
+
+            list.innerHTML = cart.map((p, i) => `
+    <div class="glass p-3 rounded-xl flex justify-between items-center">
+      <div>
+        <p>${p.name} — <span class="gold">${p.size}</span></p>
+        <small class="text-gray-400">$${p.price}</small>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button class="glass px-2 rounded" onclick="changeQty(${i},-1)">-</button>
+        <span>${p.qty}</span>
+        <button class="glass px-2 rounded" onclick="changeQty(${i},1)">+</button>
+
+        <button class="text-red-400" onclick="removeItem(${i})">✕</button>
+      </div>
+    </div>`).join("");
+        }
+
+        renderCart();
+
+        /* ---------------- WHATSAPP ---------------- */
+        function sendOrderWhatsApp() {
+            if (!cart.length) return alert("Cart empty!");
+
+            let msg = "NOIR ORDER%0A%0A";
+            cart.forEach(p => {
+                msg += `${p.name} (${p.size}) x${p.qty} - $${p.price * p.qty}%0A`;
+            });
+            msg += `%0ATotal: $${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0A`;
+            msg += "Name:%0AAddress:%0APhone:%0A";
+
+            const phone = "1234567890";
+            window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+        }
+    </script>
+</body>
+
+</html>
