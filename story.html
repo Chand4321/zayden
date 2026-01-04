@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Story — ZAYDEN Fragrances</title>
+    <title>ZAYDEN — Our Story</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
         body {
@@ -26,8 +24,35 @@
             border: 1px solid rgba(255, 215, 0, .15)
         }
 
-        .hero-gradient {
-            background: radial-gradient(circle at top, rgba(212, 175, 55, .28) 0%, transparent 35%), radial-gradient(circle at bottom, #050505 60%, #000 100%)
+        #cartDrawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 380px;
+            height: 100%;
+            background: #0b0b0b;
+            border-left: 1px solid rgba(255, 215, 0, .2);
+            transition: .35s;
+            z-index: 999
+        }
+
+        #cartDrawer.open {
+            right: 0
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%) scale(.9);
+            opacity: 0;
+            transition: .3s;
+            z-index: 1000
+        }
+
+        #toast.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1)
         }
 
         .reel {
@@ -51,7 +76,7 @@
 
 <body class="text-gray-200">
 
-    <!-- HEADER (same style across site) -->
+    <!-- HEADER -->
     <header class="sticky top-0 z-50 backdrop-blur-xl glass border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <button id="menuBtn" class="md:hidden text-gray-300 text-xl">☰</button>
@@ -62,46 +87,42 @@
             </div>
 
             <nav class="hidden md:flex items-center gap-8 text-sm text-gray-400">
-                <a href="index.html" class="hover:text-white">Home</a>
-                <a href="shop.html" class="hover:text-white">Shop</a>
-                <a href="story.html" class="hover:text-white gold">Story</a>
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="story.html" class="gold">Story</a>
+
+                <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl">
+                    Cart (<span id="cartCount">0</span>)
+                </button>
             </nav>
         </div>
 
         <div id="mobileNav"
             class="hidden md:hidden border-t border-white/10 px-6 pb-4 flex flex-col gap-3 text-gray-300">
-            <a href="index.html" class="py-2">Home</a>
-            <a href="shop.html" class="py-2">Shop</a>
-            <a href="story.html" class="py-2">Story</a>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="story.html">Story</a>
+
+            <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl w-fit">
+                Cart (<span id="cartCountMobile">0</span>)
+            </button>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero-gradient text-center py-24 px-8">
-        <p class="gold tracking-[.25em] text-sm uppercase mb-4">Our Philosophy</p>
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">
-            Where Memory Meets Fragrance
-        </h1>
+    <!-- STORY -->
+    <section class="text-center py-20 px-8">
+        <p class="gold tracking-[.25em] text-sm mb-3">Our Philosophy</p>
+        <h1 class="text-5xl font-bold mb-6">Where Memory Meets Fragrance</h1>
         <p class="max-w-2xl mx-auto text-gray-400">
-            Every bottle begins as a story: whispered inspiration, rare oils, and the art
-            of slowing down. ZAYDEN wasn’t created to blend in — it was crafted to be remembered.
+            Inspired by emotion, crafted with patience — every bottle tells a story.
         </p>
     </section>
 
-    <!-- ORIGIN STORY -->
-    <section class="px-8 md:px-16 py-20 grid md:grid-cols-2 gap-14 items-center">
+    <section class="px-8 md:px-16 py-20 grid md:grid-cols-2 gap-10 items-center">
         <div>
             <h2 class="text-3xl font-bold gold mb-4">Born From Obsession</h2>
-            <p class="text-gray-400 leading-relaxed mb-4">
-                Our journey began in a small studio surrounded by glass vials and journals filled
-                with scent experiments. We chased one question relentlessly:
-            </p>
-            <p class="italic text-gray-300 mb-4">
-                “What if fragrance didn’t just smell good — but changed the way people felt around you?”
-            </p>
             <p class="text-gray-400">
-                We traveled across ateliers and distilleries — from Middle Eastern oud houses
-                to French perfumeries — refining every note until it spoke with subtle confidence.
+                We studied scent traditions across continents — blending timeless techniques with bold creativity.
             </p>
         </div>
 
@@ -109,34 +130,22 @@
             src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=1000&q=80">
     </section>
 
-    <!-- REELS SECTION -->
+    <!-- REELS -->
     <section class="px-8 md:px-16 py-20">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10">
-            <h2 class="text-3xl font-bold gold">Behind The Scenes</h2>
-            <p class="text-gray-400 text-sm">Craft, bottling, and quiet obsessions — captured on Reels</p>
-        </div>
+        <h2 class="text-3xl font-bold gold mb-8">Behind The Scenes</h2>
 
         <div class="grid md:grid-cols-3 gap-8">
 
-            <!-- Reel 1 -->
             <div class="reel glass">
-                <iframe src="https://www.instagram.com/reel/C2y6FJ2O4kO/embed" allowfullscreen
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                </iframe>
+                <iframe src="https://www.instagram.com/reel/C2y6FJ2O4kO/embed" allowfullscreen></iframe>
             </div>
 
-            <!-- Reel 2 -->
             <div class="reel glass">
-                <iframe src="https://www.instagram.com/reel/C3C8b9pPPnh/embed" allowfullscreen
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                </iframe>
+                <iframe src="https://www.instagram.com/reel/C3C8b9pPPnh/embed" allowfullscreen></iframe>
             </div>
 
-            <!-- Reel 3 -->
             <div class="reel glass">
-                <iframe src="https://www.instagram.com/reel/C1xR4__O1sl/embed" allowfullscreen
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                </iframe>
+                <iframe src="https://www.instagram.com/reel/C1xR4__O1sl/embed" allowfullscreen></iframe>
             </div>
 
         </div>
@@ -146,35 +155,65 @@
         </p>
     </section>
 
-    <!-- CTA -->
-    <section class="text-center py-24 px-8">
-        <h3 class="text-4xl font-bold mb-4 gold">This Is More Than Scent</h3>
-        <p class="text-gray-400 max-w-2xl mx-auto mb-8">
-            It’s the fingerprint of a moment. Choose the one people remember you by.
-        </p>
-
-        <a href="shop.html" class="btn-gold px-10 py-3 rounded-xl">
-            Explore The Collection
-        </a>
-    </section>
-
-    <footer class="glass px-10 md:px-16 py-12 mt-10">
-        <div class="border-t border-white/10 pt-6 text-gray-500 text-sm flex justify-between">
-            <p>© 2026 ZAYDEN Fragrances</p>
-            <p>Privacy • Terms</p>
+    <!-- CART DRAWER -->
+    <div id="cartDrawer">
+        <div class="p-5 flex justify-between items-center border-b border-white/10">
+            <h3 class="gold text-xl font-bold">Your Cart</h3>
+            <button onclick="toggleCart()">✕</button>
         </div>
-    </footer>
+
+        <div id="cartItems" class="p-5 space-y-3 overflow-y-auto h-[70%]"></div>
+
+        <div class="p-5 border-t border-white/10">
+            <p class="flex justify-between mb-3">
+                <span>Total:</span>
+                <span class="gold font-semibold" id="cartTotal">$0</span>
+            </p>
+
+            <button class="btn-gold w-full py-3 rounded-xl" onclick="sendOrderWhatsApp()">
+                Send Order on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <div id="toast" class="glass px-6 py-3 rounded-xl text-sm gold">
+        Added to cart ✓
+    </div>
 
     <script>
-        /* Mobile nav toggle */
-        const menuBtn = document.getElementById("menuBtn");
-        const mobileNav = document.getElementById("mobileNav");
-        menuBtn?.addEventListener("click", () => mobileNav.classList.toggle("hidden"));
+        /* same shared logic */
+        menuBtn.onclick = () => mobileNav.classList.toggle("hidden");
 
-        /* Subtle scroll animation */
-        gsap.utils.toArray("section").forEach(sec => {
-            gsap.from(sec, { scrollTrigger: sec, opacity: 0, y: 50, duration: 1, ease: "power2.out" });
-        });
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function toggleCart() { cartDrawer.classList.toggle("open"); }
+        function addToCart(n, p, s) { const e = cart.find(i => i.name === n && i.size === s); e ? e.qty++ : cart.push({ name: n, price: p, size: s, qty: 1 }); save(); toast.classList.add("show"); setTimeout(() => toast.classList.remove("show"), 1000); }
+        function changeQty(i, d) { cart[i].qty += d; if (cart[i].qty <= 0) cart.splice(i, 1); save(); }
+        function removeItem(i) { cart.splice(i, 1); save(); }
+        function save() { localStorage.setItem("cart", JSON.stringify(cart)); render(); count(); }
+        function count() { const c = cart.reduce((a, b) => a + b.qty, 0); cartCount.textContent = c; cartCountMobile.textContent = c; }
+        function render() {
+            cartItems.innerHTML = cart.length ? cart.map((p, i) => `
+  <div class="glass p-3 rounded-xl flex justify-between items-center">
+   <div><p>${p.name} — <span class="gold">${p.size}</span></p><small class="text-gray-400">$${p.price}</small></div>
+   <div class="flex items-center gap-2">
+     <button onclick="changeQty(${i},-1)" class="glass px-2 rounded">-</button>
+     <span>${p.qty}</span>
+     <button onclick="changeQty(${i},1)" class="glass px-2 rounded">+</button>
+     <button onclick="removeItem(${i})" class="text-red-400">✕</button>
+   </div></div>`).join("")
+                : `<p class="text-gray-500 text-sm">Your cart is empty.</p>`;
+            cartTotal.textContent = "$" + cart.reduce((a, b) => a + b.price * b.qty, 0);
+        }
+        function sendOrderWhatsApp() {
+            if (!cart.length) return alert("Cart empty!");
+            let m = "ZAYDEN ORDER%0A%0A"; cart.forEach(p => m += `${p.name} (${p.size}) x${p.qty} - $${p.price * p.qty}%0A`);
+            m += `%0ATotal: $${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0APhone:%0A`;
+            const phone = "1234567890"; window.open(`https://wa.me/${phone}?text=${m}`, "_blank");
+            cart = []; save();
+        }
+
+        render(); count();
     </script>
 
 </body>
