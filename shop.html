@@ -122,39 +122,69 @@
     <section class="px-8 md:px-16 pb-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
         <div class="glass rounded-2xl p-6 product-card">
-            <img class="rounded-xl mb-4"
-                src="https://images.unsplash.com/photo-1607779097040-26d0b2fc8d43?auto=format&fit=crop&w=600&q=80">
-            <h3 class="text-lg font-semibold mb-1">ZAYDEN Intense</h3>
+            <img class="rounded-xl mb-4" src="shop_imgs/2.png">
+            <h3 class="text-lg font-semibold mb-1">Shades OFF | 60ml</h3>
             <p class="text-gray-400 text-sm mb-3">Bold oud — unforgettable presence.</p>
             <div class="flex justify-between items-center">
-                <span class="gold font-semibold">₹148</span>
-                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("ZAYDEN Intense",148,"50ml")'>
+                <span class="gold font-semibold">₹399</span>
+                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("Shades OFF",399,"60ml")'>
+                    Add
+                </button>
+            </div>
+        </div>
+        <div class="glass rounded-2xl p-6 product-card">
+            <img class="rounded-xl mb-4" src="shop_imgs/2.png">
+            <h3 class="text-lg font-semibold mb-1">Shades OFF | 100ml</h3>
+            <p class="text-gray-400 text-sm mb-3">Bold oud — unforgettable presence.</p>
+            <div class="flex justify-between items-center">
+                <span class="gold font-semibold">₹599</span>
+                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("Shades OFF",599,"100ml")'>
                     Add
                 </button>
             </div>
         </div>
 
         <div class="glass rounded-2xl p-6 product-card">
-            <img class="rounded-xl mb-4"
-                src="https://images.unsplash.com/photo-1592945403244-281fd123f8f9?auto=format&fit=crop&w=600&q=80">
-            <h3 class="text-lg font-semibold mb-1">Velvet Bloom</h3>
+            <img class="rounded-xl mb-4" src="shop_imgs/1.png">
+            <h3 class="text-lg font-semibold mb-1">No Doubt | 60ml</h3>
             <p class="text-gray-400 text-sm mb-3">Soft floral wrapped in vanilla.</p>
             <div class="flex justify-between items-center">
-                <span class="gold font-semibold">₹132</span>
-                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("Velvet Bloom",132,"50ml")'>
+                <span class="gold font-semibold">₹399</span>
+                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("No Doubt",60,"60ml")'>
+                    Add
+                </button>
+            </div>
+        </div>
+        <div class="glass rounded-2xl p-6 product-card">
+            <img class="rounded-xl mb-4" src="shop_imgs/1.png">
+            <h3 class="text-lg font-semibold mb-1">No Doubt | 100ml</h3>
+            <p class="text-gray-400 text-sm mb-3">Soft floral wrapped in vanilla.</p>
+            <div class="flex justify-between items-center">
+                <span class="gold font-semibold">₹599</span>
+                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("No Doubt",100,"100ml")'>
                     Add
                 </button>
             </div>
         </div>
 
         <div class="glass rounded-2xl p-6 product-card">
-            <img class="rounded-xl mb-4"
-                src="https://images.unsplash.com/photo-1594034488895-44b0d28df8ef?auto=format&fit=crop&w=600&q=80">
-            <h3 class="text-lg font-semibold mb-1">Midnight Echo</h3>
+            <img class="rounded-xl mb-4" src="shop_imgs/3.png">
+            <h3 class="text-lg font-semibold mb-1">Turn ON | 60ml</h3>
             <p class="text-gray-400 text-sm mb-3">Citrus opening — deep base.</p>
             <div class="flex justify-between items-center">
-                <span class="gold font-semibold">₹139</span>
-                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("Midnight Echo",139,"50ml")'>
+                <span class="gold font-semibold">₹399</span>
+                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("Turn ON",399,"60ml")'>
+                    Add
+                </button>
+            </div>
+        </div>
+        <div class="glass rounded-2xl p-6 product-card">
+            <img class="rounded-xl mb-4" src="shop_imgs/3.png">
+            <h3 class="text-lg font-semibold mb-1">Turn ON | 100ml</h3>
+            <p class="text-gray-400 text-sm mb-3">Citrus opening — deep base.</p>
+            <div class="flex justify-between items-center">
+                <span class="gold font-semibold">₹599</span>
+                <button class="btn-gold px-4 py-2 rounded-xl text-xs" onclick='addToCart("Midnight Echo",599,"100ml")'>
                     Add
                 </button>
             </div>
@@ -203,7 +233,7 @@
         function render() {
             cartItems.innerHTML = cart.length ? cart.map((p, i) => `
  <div class="glass p-3 rounded-xl flex justify-between items-center">
-  <div><p>${p.name} — <span class="gold">${p.size}</span></p><small class="text-gray-400">$${p.price}</small></div>
+  <div><p>${p.name} — <span class="gold">${p.size}</span></p><small class="text-gray-400">₹${p.price}</small></div>
   <div class="flex items-center gap-2">
     <button onclick="changeQty(${i},-1)" class="glass px-2 rounded">-</button>
     <span>${p.qty}</span>
@@ -211,12 +241,12 @@
     <button onclick="removeItem(${i})" class="text-red-400">✕</button>
   </div></div>`).join("")
                 : `<p class="text-gray-500 text-sm">Your cart is empty.</p>`;
-            cartTotal.textContent = "$" + cart.reduce((a, b) => a + b.price * b.qty, 0);
+            cartTotal.textContent = "₹" + cart.reduce((a, b) => a + b.price * b.qty, 0);
         }
 
         function sendOrderWhatsApp() {
             if (!cart.length) return alert("Cart empty!");
-            let m = "ZAYDEN ORDER%0A%0A"; cart.forEach(p => m += `${p.name} (${p.size}) x${p.qty} - $${p.price * p.qty}%0A`);
+            let m = "ZAYDEN ORDER%0A%0A"; cart.forEach(p => m += `${p.name} (${p.size}) x${p.qty} - ₹${p.price * p.qty}%0A`);
             m += `%0ATotal: $${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0APhone:%0A`;
             const phone = "8261056157"; window.open(`https://wa.me/${phone}?text=${m}`, "_blank");
             cart = []; save();
