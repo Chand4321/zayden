@@ -220,7 +220,7 @@
             cart.forEach(p => msg += `${p.name} (${p.size}) x${p.qty} - ₹${p.price * p.qty}%0A`);
             msg += `%0ATotal: ₹${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0APhone:%0A`;
 
-            const phone = "8261056157";
+            const phone = "9604704450";
             window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
 
             cart = []; save(); // CLEAR CART
