@@ -91,10 +91,10 @@
                 <a href="shop.html">Shop</a>
                 <a href="story.html" class="gold">Story</a>
 
-                <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl">
-                    Cart (<span id="cartCount">0</span>)
-                </button>
             </nav>
+            <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl">
+                🛒 (<span id="cartCount">0</span>)
+            </button>
         </div>
 
         <div id="mobileNav"
@@ -193,24 +193,37 @@
         function save() { localStorage.setItem("cart", JSON.stringify(cart)); render(); count(); }
         function count() { const c = cart.reduce((a, b) => a + b.qty, 0); cartCount.textContent = c; cartCountMobile.textContent = c; }
         function render() {
-            cartItems.innerHTML = cart.length ? cart.map((p, i) => `
-  <div class="glass p-3 rounded-xl flex justify-between items-center">
-   <div><p>${p.name} — <span class="gold">${p.size}</span></p><small class="text-gray-400">$${p.price}</small></div>
-   <div class="flex items-center gap-2">
-     <button onclick="changeQty(${i},-1)" class="glass px-2 rounded">-</button>
-     <span>${p.qty}</span>
-     <button onclick="changeQty(${i},1)" class="glass px-2 rounded">+</button>
-     <button onclick="removeItem(${i})" class="text-red-400">✕</button>
-   </div></div>`).join("")
+            cartItems.innerHTML = cart.length
+                ? cart.map((p, i) => `
+    <div class="glass p-3 rounded-xl flex justify-between items-center">
+      <div>
+        <p>${p.name} — <span class="gold">${p.size}</span></p>
+        <small class="text-gray-400">₹${p.price}</small>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button class="glass px-2 rounded" onclick="changeQty(${i},-1)">-</button>
+        <span>${p.qty}</span>
+        <button class="glass px-2 rounded" onclick="changeQty(${i},1)">+</button>
+        <button class="text-red-400" onclick="removeItem(${i})">✕</button>
+      </div>
+    </div>`).join("")
                 : `<p class="text-gray-500 text-sm">Your cart is empty.</p>`;
-            cartTotal.textContent = "$" + cart.reduce((a, b) => a + b.price * b.qty, 0);
+
+            cartTotal.textContent = "₹" + cart.reduce((a, b) => a + b.price * b.qty, 0);
         }
+
         function sendOrderWhatsApp() {
             if (!cart.length) return alert("Cart empty!");
-            let m = "ZAYDEN ORDER%0A%0A"; cart.forEach(p => m += `${p.name} (${p.size}) x${p.qty} - $${p.price * p.qty}%0A`);
-            m += `%0ATotal: $${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0APhone:%0A`;
-            const phone = "8261056157"; window.open(`https://wa.me/${phone}?text=${m}`, "_blank");
-            cart = []; save();
+
+            let msg = "ZAYDEN ORDER%0A%0A";
+            cart.forEach(p => msg += `${p.name} (${p.size}) x${p.qty} - ₹${p.price * p.qty}%0A`);
+            msg += `%0ATotal: ₹${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0APhone:%0A`;
+
+            const phone = "8261056157";
+            window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+
+            cart = []; save(); // CLEAR CART
         }
 
         render(); count();

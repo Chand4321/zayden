@@ -96,10 +96,10 @@
                 <a href="shop.html" class="hover:text-white">Shop</a>
                 <a href="story.html" class="hover:text-white">Story</a>
 
-                <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl">
-                    🛒 Cart (<span id="cartCount">0</span>)
-                </button>
             </nav>
+            <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl">
+                🛒 (<span id="cartCount">0</span>)
+            </button>
         </div>
 
         <div id="mobileNav"
@@ -162,10 +162,9 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
 
                 <div class="absolute bottom-0 p-6">
-                    <h3 class="text-xl font-semibold mb-1">Shades of Zayden</h3>
+                    <h3 class="text-xl font-semibold mb-1">Shades OFF</h3>
                     <p class="text-gray-400 text-sm mb-4">Commanding oud with depth.</p>
-                    <button class="btn-gold px-6 py-2 rounded-xl text-sm"
-                        onclick='addToCart("Shades of Zayden",148,"50ml")'>
+                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("Shades OFF",599,"100ml")'>
                         Order Now
                     </button>
                 </div>
@@ -178,7 +177,7 @@
                 <div class="absolute bottom-0 p-6">
                     <h3 class="text-xl font-semibold mb-1">Turn ON</h3>
                     <p class="text-gray-400 text-sm mb-4">Romantic jasmine & vanilla.</p>
-                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("Turn ON",132,"50ml")'>
+                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("Turn ON",599,"100ml")'>
                         Order Now
                     </button>
                 </div>
@@ -258,7 +257,7 @@
     <div class="glass p-3 rounded-xl flex justify-between items-center">
       <div>
         <p>${p.name} — <span class="gold">${p.size}</span></p>
-        <small class="text-gray-400">$${p.price}</small>
+        <small class="text-gray-400">₹${p.price}</small>
       </div>
 
       <div class="flex items-center gap-2">
@@ -270,15 +269,15 @@
     </div>`).join("")
                 : `<p class="text-gray-500 text-sm">Your cart is empty.</p>`;
 
-            cartTotal.textContent = "$" + cart.reduce((a, b) => a + b.price * b.qty, 0);
+            cartTotal.textContent = "₹" + cart.reduce((a, b) => a + b.price * b.qty, 0);
         }
 
         function sendOrderWhatsApp() {
             if (!cart.length) return alert("Cart empty!");
 
             let msg = "ZAYDEN ORDER%0A%0A";
-            cart.forEach(p => msg += `${p.name} (${p.size}) x${p.qty} - $${p.price * p.qty}%0A`);
-            msg += `%0ATotal: $${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0APhone:%0A`;
+            cart.forEach(p => msg += `${p.name} (${p.size}) x${p.qty} - ₹${p.price * p.qty}%0A`);
+            msg += `%0ATotal: ₹${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0APhone:%0A`;
 
             const phone = "8261056157";
             window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
