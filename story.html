@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZAYDEN — Our Story</title>
-
+    <link rel="icon" href="zyden_logo.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -90,7 +90,7 @@
                 <a href="index.html">Home</a>
                 <a href="shop.html">Shop</a>
                 <a href="story.html" class="gold">Story</a>
-
+                <a href="contact.html" class="hover:text-white">Contact</a>
             </nav>
             <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl">
                 🛒 (<span id="cartCount">0</span>)
@@ -227,6 +227,71 @@
         }
 
         render(); count();
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ZAYDEN",
+      "url": "https://www.noirfragrances.com",
+      "logo": "https://www.noirfragrances.com/imgs/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+19175550198",
+        "contactType": "customer service",
+        "email": "sales@noirfragrances.com"
+      },
+      "sameAs": [
+        "https://www.instagram.com/noir.fragrances",
+        "https://wa.me/19175550198"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "ZAYDEN — Downtown",
+      "image": "https://www.noirfragrances.com/imgs/store1.jpg",
+      "telephone": "+19175550198",
+      "email": "sales@noirfragrances.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "121 Royal Street",
+        "addressLocality": "New York",
+        "addressRegion": "Mumbai",
+        "postalCode": "401209",
+        "addressCountry": "India"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "10:00", "closes": "21:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "18:00" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "cccc — Grand Mall",
+      "image": "https://www.noirfragrances.com/imgs/store2.jpg",
+      "telephone": "+19175550198",
+      "email": "sales@noirfragrances.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Level 2, Grand Mall",
+        "addressLocality": "Los Angeles",
+        "addressRegion": "CA",
+        "postalCode": "90015",
+        "addressCountry": "India"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "22:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "19:00" }
+      ]
+    }
     </script>
 
 </body>

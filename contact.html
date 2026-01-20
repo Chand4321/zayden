@@ -3,11 +3,19 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZAYDEN Fragrances — Home</title>
-    <link rel="icon" href="zyden_logo.png" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Contact ZAYDEN | Luxury Perfume Boutique</title>
 
+    <meta name="description"
+        content="Visit ZAYDEN perfume boutique. Store locations, phone number, opening hours, WhatsApp orders and bulk perfume orders.">
+
+    <meta name="keywords"
+        content="ZAYDEN, perfume shop, luxury perfume store, fragrance boutique, perfume near me, oud perfume, buy perfume">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="zyden_logo.png" type="image/x-icon">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             background: #050505;
@@ -77,13 +85,34 @@
             transform: translateX(-50%) scale(1)
         }
     </style>
+    <style>
+        body {
+            background: #050505;
+            color: #e5e5e5
+        }
+
+        .gold {
+            color: #d4af37
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .04);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 215, 0, .15)
+        }
+
+        .map {
+            border-radius: 18px;
+            overflow: hidden
+        }
+    </style>
 </head>
 
-<body class="text-gray-200">
+<body>
+
     <!-- HEADER -->
     <header class="sticky top-0 z-50 backdrop-blur-xl glass border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
             <button id="menuBtn" class="md:hidden text-gray-300 text-xl">☰</button>
 
             <div class="flex items-center gap-3">
@@ -92,10 +121,10 @@
             </div>
 
             <nav class="hidden md:flex items-center gap-8 text-sm text-gray-400">
-                <a href="index.html" class="hover:text-white gold">Home</a>
-                <a href="shop.html" class="hover:text-white">Shop</a>
+                <a href="index.html" class="hover:text-white">Home</a>
+                <a href="shop.html" class="hover:text-white ">Shop</a>
                 <a href="story.html" class="hover:text-white">Story</a>
-                <a href="contact.html" class="hover:text-white">Contact</a>
+                <a href="contact.html" class="hover:text-white gold">Contact</a>
             </nav>
             <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl">
                 🛒 (<span id="cartCount">0</span>)
@@ -107,80 +136,104 @@
             <a href="index.html">Home</a>
             <a href="shop.html">Shop</a>
             <a href="story.html">Story</a>
+
             <button onclick="toggleCart()" class="glass px-4 py-2 rounded-xl w-fit">
                 Cart (<span id="cartCountMobile">0</span>)
             </button>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero-gradient grid md:grid-cols-2 items-center px-8 md:px-16 min-h-screen gap-10">
-        <div class="pt-16">
-            <p class="uppercase tracking-[.3em] gold mb-3 text-sm">Limited Release</p>
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                Fragrances Designed<br>To <span class="gold">Captivate</span>
-            </h1>
-            <p class="text-gray-400 max-w-lg mb-8">
-                Fly away with Zayden and you'll feel the different sensation of flying.
-            </p>
 
-            <div class="flex gap-4">
-                <a href="shop.html" class="btn-gold px-7 py-3 rounded-xl">Shop Collection</a>
-                <button class="glass px-7 py-3 rounded-xl">Discover Story</button>
+    <!-- HERO -->
+    <section class="text-center py-20 px-8">
+        <h1 class="text-4xl md:text-5xl font-bold gold mb-4">
+            Visit ZAYDEN
+        </h1>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+            Luxury fragrance boutiques — walk in, experience, and order with confidence.
+        </p>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section class="px-8 md:px-16 pb-20 grid md:grid-cols-2 gap-12">
+
+        <!-- Location 1 -->
+        <div class="glass rounded-2xl p-6 space-y-4">
+            <h2 class="text-2xl font-bold gold">ZAYDEN — Downtown</h2>
+
+            <p>📍 121 Royal Street, Downtown, New York, Mumbai</p>
+            <p>📞 +1 917 555 0198</p>
+            <p>📧 sales@noirfragrances.com</p>
+            <p>🕒 Mon – Sat: 10:00 AM – 9:00 PM</p>
+            <p>🕒 Sunday: 11:00 AM – 6:00 PM</p>
+
+            <div class="map mt-4">
+                <iframe src="https://www.google.com/maps?q=121+Royal+Street+New+York&output=embed" width="100%"
+                    height="260" loading="lazy"></iframe>
             </div>
         </div>
 
-        <div class="flex justify-center hidden pl-24 md:block">
-            <img src="2.png" class="w-80 md:w-96 drop-shadow-2xl">
+        <!-- Location 2 -->
+        <div class="glass rounded-2xl p-6 space-y-4">
+            <h2 class="text-2xl font-bold gold">ZAYDEN — Mall Boutique</h2>
+
+            <p>📍 Level 2, Grand Mall, Los Angeles, CA</p>
+            <p>📞 +1 310 555 7742</p>
+            <p>📧 orders@noirfragrances.com</p>
+            <p>🕒 Mon – Sat: 11:00 AM – 10:00 PM</p>
+            <p>🕒 Sunday: 11:00 AM – 7:00 PM</p>
+
+            <div class="map mt-4">
+                <iframe src="https://www.google.com/maps?q=Grand+Mall+Los+Angeles&output=embed" width="100%"
+                    height="260" loading="lazy"></iframe>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- QUICK CONTACT -->
+    <section class="px-8 md:px-16 pb-20">
+        <div class="glass rounded-2xl p-10 text-center">
+            <h2 class="text-3xl font-bold gold mb-4">Order or Enquire Instantly</h2>
+            <p class="text-gray-400 mb-6">
+                You can place orders, ask about stock, or request custom perfume blends via WhatsApp.
+            </p>
+
+            <a href="https://wa.me/1234567890"
+                class="bg-gradient-to-r from-yellow-600 to-yellow-400 text-black px-10 py-3 rounded-xl font-semibold">
+                Chat on WhatsApp
+            </a>
         </div>
     </section>
 
-    <!-- FEATURED -->
-    <section class="px-8 md:px-16 py-20">
-        <div class="flex flex-col sm:flex-row sm:justify-between mb-10">
-            <h2 class="text-3xl font-bold gold">Featured Exclusives</h2>
-            <p class="text-gray-400 text-sm">Limited drops — crafted in small batches</p>
-        </div>
+    <!-- FAQ -->
+    <section class="px-8 md:px-16 pb-24">
+        <h2 class="text-3xl font-bold gold mb-10 text-center">
+            Frequently Asked Questions
+        </h2>
 
-        <div class="grid md:grid-cols-3 gap-10">
+        <div class="grid md:grid-cols-3 gap-8">
 
-            <div class="relative glass rounded-2xl overflow-hidden card-hover">
-                <img class="h-64 w-full object-cover opacity-90" src="pd1.png">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
-
-                <div class="absolute bottom-0 p-6">
-                    <h3 class="text-xl font-semibold mb-1">No Doubt</h3>
-                    <p class="text-gray-400 text-sm mb-4">Golden spice with deep amber.</p>
-                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("No Doubt",599,"10ml")'>
-                        Order Now
-                    </button>
-                </div>
+            <div class="glass p-6 rounded-xl">
+                <h3 class="font-semibold mb-3">Do you offer bulk or corporate orders?</h3>
+                <p class="text-gray-400 text-sm">
+                    Yes. We provide special pricing for bulk perfume orders, weddings, corporate gifting and
+                    brand collaborations. Contact us via WhatsApp or email for a custom quote.
+                </p>
             </div>
 
-            <div class="relative glass rounded-2xl overflow-hidden card-hover">
-                <img class="h-64 w-full object-cover opacity-90" src="p2.png">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
-
-                <div class="absolute bottom-0 p-6">
-                    <h3 class="text-xl font-semibold mb-1">Shades OFF</h3>
-                    <p class="text-gray-400 text-sm mb-4">Commanding oud with depth.</p>
-                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("Shades OFF",599,"10ml")'>
-                        Order Now
-                    </button>
-                </div>
+            <div class="glass p-6 rounded-xl">
+                <h3 class="font-semibold mb-3">Can I test fragrances in store?</h3>
+                <p class="text-gray-400 text-sm">
+                    Absolutely. All our boutiques provide full scent testing with trained fragrance advisors.
+                </p>
             </div>
 
-            <div class="relative glass rounded-2xl overflow-hidden card-hover">
-                <img class="h-64 w-full object-cover opacity-90" src="p3.png">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
-
-                <div class="absolute bottom-0 p-6">
-                    <h3 class="text-xl font-semibold mb-1">Turn ON</h3>
-                    <p class="text-gray-400 text-sm mb-4">Romantic jasmine & vanilla.</p>
-                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("Turn ON",599,"10ml")'>
-                        Order Now
-                    </button>
-                </div>
+            <div class="glass p-6 rounded-xl">
+                <h3 class="font-semibold mb-3">Do you ship nationwide?</h3>
+                <p class="text-gray-400 text-sm">
+                    Yes. We ship across the country with secure, fragrance-safe packaging and express delivery.
+                </p>
             </div>
 
         </div>
@@ -254,19 +307,19 @@
         function render() {
             cartItems.innerHTML = cart.length
                 ? cart.map((p, i) => `
-    <div class="glass p-3 rounded-xl flex justify-between items-center">
-      <div>
-        <p>${p.name} — <span class="gold">${p.size}</span></p>
-        <small class="text-gray-400">₹${p.price}</small>
-      </div>
-
-      <div class="flex items-center gap-2">
-        <button class="glass px-2 rounded" onclick="changeQty(${i},-1)">-</button>
-        <span>${p.qty}</span>
-        <button class="glass px-2 rounded" onclick="changeQty(${i},1)">+</button>
-        <button class="text-red-400" onclick="removeItem(${i})">✕</button>
-      </div>
-    </div>`).join("")
+        <div class="glass p-3 rounded-xl flex justify-between items-center">
+          <div>
+            <p>${p.name} — <span class="gold">${p.size}</span></p>
+            <small class="text-gray-400">₹${p.price}</small>
+          </div>
+    
+          <div class="flex items-center gap-2">
+            <button class="glass px-2 rounded" onclick="changeQty(${i},-1)">-</button>
+            <span>${p.qty}</span>
+            <button class="glass px-2 rounded" onclick="changeQty(${i},1)">+</button>
+            <button class="text-red-400" onclick="removeItem(${i})">✕</button>
+          </div>
+        </div>`).join("")
                 : `<p class="text-gray-500 text-sm">Your cart is empty.</p>`;
 
             cartTotal.textContent = "₹" + cart.reduce((a, b) => a + b.price * b.qty, 0);
@@ -288,7 +341,6 @@
         /* INIT */
         render(); count();
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
