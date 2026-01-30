@@ -279,7 +279,7 @@
         function sendOrderWhatsApp() {
             if (!cart.length) return alert("Cart empty!");
             let m = "ZAYDEN ORDER%0A%0A"; cart.forEach(p => m += `${p.name} (${p.size}) x${p.qty} - ₹${p.price * p.qty}%0A`);
-            m += `%0ATotal: ₹${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0APhone:%0A`;
+            m += `%0ATotal: ₹${cart.reduce((a, b) => a + b.price * b.qty, 0)}%0A%0AName:%0AAddress:%0ACity:%0AState:%0APincode:%0AContact number:%0A`;
             const phone = "9604704450"; window.open(`https://wa.me/${phone}?text=${m}`, "_blank");
             cart = []; save();
         }
