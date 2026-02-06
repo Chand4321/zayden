@@ -161,7 +161,7 @@
 
         <!-- PERFUMES -->
         <div class="glass rounded-2xl p-6 product-card" data-category="perfume">
-            <img src="shop_imgs/2.png">
+            <img src="shop_imgs/soap_imgs/1.jpeg">
             <h3 class="font-semibold mt-4">Shades OFF | 60ml</h3>
             <p class="text-gray-400 text-sm mb-3">Bold oud — unforgettable presence.</p>
             <div class="flex justify-between">
@@ -172,7 +172,7 @@
         </div>
 
         <div class="glass rounded-2xl p-6 product-card" data-category="perfume">
-            <img src="shop_imgs/1.png">
+            <img src="shop_imgs/testa.png">
             <h3 class="font-semibold mt-4">No Doubt | 100ml</h3>
             <p class="text-gray-400 text-sm mb-3">Soft floral with vanilla warmth.</p>
             <div class="flex justify-between">
@@ -184,7 +184,7 @@
 
         <!-- ROLL ON -->
         <div class="glass rounded-2xl p-6 product-card" data-category="rollon">
-            <img src="shop_imgs/3.png">
+            <img src="shop_imgs/testb.png">
             <h3 class="font-semibold mt-4">Turn ON Roll-On</h3>
             <p class="text-gray-400 text-sm mb-3">Fresh citrus energy.</p>
             <div class="flex justify-between">
@@ -195,17 +195,78 @@
         </div>
 
         <!-- SOAP -->
-        <div class="glass rounded-2xl p-6 product-card" data-category="soap">
-            <img src="shop_imgs/4.png">
-            <h3 class="font-semibold mt-4">Mild Fresh Soap</h3>
-            <p class="text-gray-400 text-sm mb-3">Gentle cleansing with fragrance.</p>
-            <div class="flex justify-between">
-                <span class="gold">₹199</span>
-                <button class="btn-gold px-4 py-2 text-xs rounded-xl"
-                    onclick='addToCart("Mild Fresh Soap",199,"Soap")'>Add</button>
-            </div>
-        </div>
+        <div class="glass rounded-2xl p-6 product-card relative overflow-hidden" data-category="soap">
+            <!-- SUBTLE GLOW -->
+            <div class="absolute -top-20 -left-20 w-52 h-52 bg-yellow-600/20 blur-3xl rounded-full"></div>
 
+            <!-- IMAGE -->
+            <div class="relative z-10">
+                <img src="shop_imgs/soap_imgs/1.png" class="mx-auto">
+            </div>
+
+            <!-- CONTENT -->
+            <div class="relative z-10 mt-4">
+                <h3 class="font-semibold text-lg mb-1">
+                    Skin Whitening
+                    <!-- <span class="text-sm text-gray-400">| 60ml</span> -->
+                </h3>
+
+                <p class="text-gray-400 text-sm mb-4">
+                    Bold oud — unforgettable presence.
+                </p>
+
+                <div class="flex items-center justify-between">
+                    <span class="gold text-lg font-bold">₹399</span>
+
+                    <button class="btn-gold px-5 py-2 rounded-xl text-xs tracking-wide"
+                        onclick='addToCart("Shades OFF",399,"60ml")'>
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="glass rounded-2xl p-6 product-card relative overflow-hidden" data-category="soap">
+
+            <!-- GLOW -->
+            <div class="absolute -top-20 -right-20 w-56 h-56 bg-green-600/30 blur-3xl rounded-full"></div>
+
+            <!-- BADGE -->
+            <span
+                class="absolute top-4 right-4 z-20 bg-gradient-to-r from-green-700 to-green-500 text-xs px-3 py-1 rounded-full tracking-wide">
+                COMBO DEAL
+            </span>
+
+            <!-- IMAGE -->
+            <div class="relative z-10">
+                <img src="shop_imgs/soap_imgs/2.png" class="mx-auto">
+            </div>
+
+            <!-- CONTENT -->
+            <div class="relative z-10 text-center mt-4">
+                <h3 class="font-semibold text-lg">
+                    Skin Whitening <span class="gold">Combo</span>
+                </h3>
+
+                <p class="text-gray-400 text-sm mb-3">
+                    2 handcrafted soaps for brighter, healthier skin.
+                </p>
+
+                <!-- OFFER -->
+                <div class="flex justify-center items-center gap-3 mb-4">
+                    <span class="text-gray-500 line-through text-sm">₹299</span>
+                    <span class="gold text-xl font-bold">₹199</span>
+                    <span class="text-green-500 text-xs">SAVE ₹100</span>
+                </div>
+
+                <!-- CTA -->
+                <button class="btn-gold px-6 py-3 rounded-xl text-xs tracking-wide w-full"
+                    onclick='addToCart("Skin Whitening Combo Soap",199,"Combo")'>
+                    Add Combo to Cart
+                </button>
+            </div>
+
+        </div>
     </section>
 
     <!-- CART DRAWER -->
