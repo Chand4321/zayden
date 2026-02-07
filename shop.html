@@ -103,6 +103,83 @@
             opacity: 1;
             transform: translateX(-50%) scale(1);
         }
+
+        /* Special combo button */
+        .combo-btn {
+            position: relative;
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #111;
+            background: linear-gradient(135deg, #ffcc33, #ff9f1c);
+            box-shadow: 0 0 0 rgba(255, 180, 0, .6);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 180, 0, .6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(255, 180, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 180, 0, 0);
+            }
+        }
+
+        .combo-badge {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background: #ff3d00;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 999px;
+        }
+
+        .product-card[data-category="combo"] {
+            border: 1px solid rgba(255, 215, 0, 0.35);
+        }
+
+        /* Combo card emphasis */
+        .combo-card {
+            background:
+                linear-gradient(180deg, rgba(255, 215, 0, 0.08), transparent),
+                rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 215, 0, .35);
+        }
+
+        /* Product type pill */
+        .combo-type {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-size: 11px;
+            letter-spacing: .15em;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        /* Type colors (future ready) */
+        .combo-perfume {
+            background: rgba(255, 215, 0, .15);
+            color: #d4af37;
+        }
+
+        .combo-rollon {
+            background: rgba(0, 180, 255, .15);
+            color: #6fd3ff;
+        }
+
+        .combo-soap {
+            background: rgba(120, 255, 180, .15);
+            color: #6fffb0;
+        }
     </style>
 </head>
 
@@ -149,15 +226,36 @@
     <!-- CATEGORIES -->
     <section class="px-8 md:px-16 mb-10">
         <div class="flex flex-wrap justify-center gap-3">
-            <button class="category-btn active" onclick="filterCategory('all',this)">All</button>
-            <button class="category-btn" onclick="filterCategory('perfume',this)">Perfumes</button>
-            <button class="category-btn" onclick="filterCategory('rollon',this)">Roll-Ons</button>
-            <button class="category-btn" onclick="filterCategory('soap',this)">Soaps</button>
+
+            <button class="category-btn active" onclick="filterCategory('all', this)">
+                All
+            </button>
+
+            <button class="category-btn" onclick="filterCategory('perfume', this)">
+                Perfumes
+            </button>
+
+            <button class="category-btn" onclick="filterCategory('rollon', this)">
+                Roll-Ons
+            </button>
+
+            <button class="category-btn" onclick="filterCategory('soap', this)">
+                Soaps
+            </button>
+
+            <!-- SPECIAL COMBO -->
+            <button class="combo-btn" onclick="filterCategory('combo', this)">
+                Special Combo
+                <span class="combo-badge">HOT</span>
+            </button>
+
         </div>
     </section>
 
     <!-- PRODUCTS -->
     <section class="px-8 md:px-16 pb-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+
         <!-- PERFUMES -->
         <!-- ================= PERFUME PRODUCT CARDS ================= -->
 
@@ -695,6 +793,127 @@
             </div>
 
         </div>
+
+
+        <div class="glass rounded-2xl p-6 product-card" data-category="combo">
+            <img src="shop_imgs/combo.png">
+
+            <h3 class="font-semibold mt-4">
+                Signature Combo Pack
+            </h3>
+
+            <p class="text-gray-400 text-sm mb-3">
+                Shades OFF 60ml + No Doubt 60ml + Mild Fresh Soap
+            </p>
+
+            <div class="flex justify-between items-center">
+                <span class="gold font-semibold">
+                    ₹899 <span class="line-through text-gray-500 text-sm ml-1">₹1199</span>
+                </span>
+
+                <button class="btn-gold px-4 py-2 text-xs rounded-xl"
+                    onclick='addToCart("Signature Combo Pack",899,"Combo")'>
+                    Add
+                </button>
+            </div>
+        </div>
+
+        <div class="glass rounded-2xl p-8 product-card relative overflow-hidden" data-category="combo">
+
+            <!-- subtle glow background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-transparent"></div>
+
+            <!-- badge -->
+            <div class="absolute top-4 right-4 bg-yellow-400 text-black text-xs px-3 py-1 rounded-full font-semibold">
+                COMBO DEAL
+            </div>
+
+            <!-- content -->
+            <div class="relative z-10 text-center">
+
+                <h3 class="text-2xl font-bold gold mb-2 tracking-wide">
+                    Combo 60ml
+                </h3>
+
+                <p class="text-gray-300 text-sm mb-6">
+                    Choose <span class="gold font-semibold">ANY 2 Perfumes</span><br>
+                    from our 60ml collection
+                </p>
+
+                <!-- price -->
+                <div class="mb-6">
+                    <p class="text-gray-400 text-sm line-through">₹798</p>
+                    <p class="text-3xl font-bold gold">₹699</p>
+                </div>
+
+                <!-- benefits -->
+                <ul class="text-gray-400 text-sm mb-6 space-y-2">
+                    <li>✓ Pick any two fragrances</li>
+                    <li>✓ Long-lasting premium oils</li>
+                    <li>✓ Best value combo offer</li>
+                </ul>
+
+                <!-- CTA -->
+                <button class="btn-gold px-6 py-3 rounded-xl text-sm font-semibold"
+                    onclick='addToCart("Combo 60ml (Choose Any 2)",699,"Combo")'>
+                    Add Combo
+                </button>
+
+                <!-- note -->
+                <p class="text-gray-500 text-xs mt-4">
+                    *You can select perfume names on WhatsApp
+                </p>
+
+            </div>
+        </div>
+        <div class="glass combo-card rounded-2xl p-8 product-card" data-category="combo">
+
+            <div class="text-center">
+
+                <!-- PRODUCT TYPE -->
+                <span class="combo-type combo-perfume">
+                    PERFUME COMBO
+                </span>
+
+                <!-- MAIN TITLE -->
+                <h3 class="text-2xl font-bold gold mt-2 mb-3 tracking-wide">
+                    Combo 60ml
+                </h3>
+
+                <!-- DESCRIPTION -->
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                    Choose <span class="gold font-semibold">ANY 2 Perfumes</span><br>
+                    from our 60ml collection
+                </p>
+
+                <!-- PRICE -->
+                <div class="mb-6">
+                    <p class="text-gray-400 text-sm line-through">₹798</p>
+                    <p class="text-3xl font-bold gold">₹699</p>
+                </div>
+
+                <!-- VALUE POINTS -->
+                <ul class="text-gray-400 text-sm mb-6 space-y-2">
+                    <li>✓ Pick your own fragrance pair</li>
+                    <li>✓ Premium long-lasting oils</li>
+                    <li>✓ Best value perfume deal</li>
+                </ul>
+
+                <!-- CTA -->
+                <button class="btn-gold px-7 py-3 rounded-xl text-sm font-semibold"
+                    onclick='addToCart("Perfume Combo 60ml (Choose Any 2)",699,"Combo")'>
+                    Add Combo
+                </button>
+
+                <!-- NOTE -->
+                <p class="text-gray-500 text-xs mt-4">
+                    *Choose perfumes while confirming on WhatsApp
+                </p>
+
+            </div>
+        </div>
+
+
     </section>
 
     <!-- CART DRAWER -->
@@ -760,6 +979,22 @@
             });
         }
         render(); count();
+    </script>
+
+    <script>
+        function filterCategory(category, btn) {
+            document.querySelectorAll(".category-btn, .combo-btn")
+                .forEach(b => b.classList.remove("active"));
+
+            btn.classList.add("active");
+
+            document.querySelectorAll(".product-card").forEach(card => {
+                card.style.display =
+                    category === "all" || card.dataset.category === category
+                        ? "block"
+                        : "none";
+            });
+        }
     </script>
 
     <script type="application/ld+json">
