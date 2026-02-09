@@ -151,49 +151,136 @@
     </section>
 
     <!-- FEATURED -->
+    <!-- FEATURED EXCLUSIVES -->
     <section class="px-8 md:px-16 py-20">
-        <div class="flex flex-col sm:flex-row sm:justify-between mb-10">
-            <h2 class="text-3xl font-bold gold">Featured Exclusives</h2>
-            <p class="text-gray-400 text-sm">Limited drops — crafted in small batches</p>
+        <div class="flex flex-col sm:flex-row sm:justify-between mb-12">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold gold mb-2">
+                    Featured Exclusives
+                </h2>
+                <p class="text-gray-400 text-sm">
+                    Limited edition combos — crafted for maximum value & luxury
+                </p>
+            </div>
+            <a href="shop.html" class="mt-4 sm:mt-0 text-sm gold hover:underline">
+                View all products →
+            </a>
         </div>
 
         <div class="grid md:grid-cols-3 gap-10">
 
-            <div class="relative glass rounded-2xl overflow-hidden card-hover">
-                <img class="h-64 w-full object-cover opacity-90" src="pd1.png">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
+            <!-- ROLL ON COMBO -->
+            <div class="glass rounded-2xl p-6 product-card relative overflow-hidden card-hover">
 
-                <div class="absolute bottom-0 p-6">
-                    <h3 class="text-xl font-semibold mb-1">No Doubt</h3>
-                    <p class="text-gray-400 text-sm mb-4">Golden spice with deep amber.</p>
-                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("No Doubt",599,"100ml")'>
-                        Order Now
+                <div class="absolute -top-20 -right-20 w-56 h-56 bg-purple-600/30 blur-3xl rounded-full"></div>
+
+                <span
+                    class="absolute top-4 right-4 z-20 bg-gradient-to-r from-purple-700 to-purple-500 text-xs px-3 py-1 rounded-full tracking-wide">
+                    ROLL-ON COMBO
+                </span>
+
+                <div class="relative z-10">
+                    <img src="shop_imgs/combo/1.png" class="mx-auto h-48 object-contain">
+                </div>
+
+                <div class="relative z-10 text-center mt-4">
+                    <h3 class="font-semibold text-lg mb-1">
+                        4 Roll-On <span class="gold">Attar Combo</span>
+                    </h3>
+
+                    <p class="text-gray-400 text-xs mb-2">
+                        6ml each • Long-lasting fragrance
+                    </p>
+
+                    <p class="text-gray-400 text-xs mb-4">
+                        No Doubt · Mild Fresh · Turn On · Shades of Zn
+                    </p>
+
+                    <div class="flex justify-center items-center gap-3 mb-5">
+                        <span class="text-gray-500 line-through text-sm">₹796</span>
+                        <span class="gold text-xl font-bold">₹599</span>
+                        <span class="text-green-500 text-xs">SAVE ₹197</span>
+                    </div>
+
+                    <button class="btn-gold px-6 py-3 rounded-xl text-xs tracking-wide w-full"
+                        onclick='addToCart("4 Roll-On Attar Combo",599,"Combo")'>
+                        Add Combo to Cart
                     </button>
                 </div>
             </div>
 
-            <div class="relative glass rounded-2xl overflow-hidden card-hover">
-                <img class="h-64 w-full object-cover opacity-90" src="p2.png">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
+            <!-- SOAP COMBO -->
+            <div class="glass rounded-2xl p-6 product-card relative overflow-hidden card-hover">
 
-                <div class="absolute bottom-0 p-6">
-                    <h3 class="text-xl font-semibold mb-1">Shades OFF</h3>
-                    <p class="text-gray-400 text-sm mb-4">Commanding oud with depth.</p>
-                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("Shades OFF",599,"100ml")'>
-                        Order Now
+                <div class="absolute -top-20 -right-20 w-56 h-56 bg-green-600/30 blur-3xl rounded-full"></div>
+
+                <span
+                    class="absolute top-4 right-4 z-20 bg-gradient-to-r from-green-700 to-green-500 text-xs px-3 py-1 rounded-full tracking-wide">
+                    COMBO DEAL
+                </span>
+
+                <div class="relative z-10">
+                    <img src="shop_imgs/soap_imgs/2.png" class="mx-auto h-48 object-contain">
+                </div>
+
+                <div class="relative z-10 text-center mt-4">
+                    <h3 class="font-semibold text-lg mb-2">
+                        Skin Whitening <span class="gold">Combo</span>
+                    </h3>
+
+                    <p class="text-gray-400 text-sm mb-4">
+                        2 handcrafted soaps for brighter, healthier skin
+                    </p>
+
+                    <div class="flex justify-center items-center gap-3 mb-5">
+                        <span class="text-gray-500 line-through text-sm">₹398</span>
+                        <span class="gold text-xl font-bold">₹299</span>
+                        <span class="text-green-500 text-xs">SAVE ₹101</span>
+                    </div>
+
+                    <button class="btn-gold px-6 py-3 rounded-xl text-xs tracking-wide w-full"
+                        onclick='addToCart("Skin Whitening Combo Soap",299,"Combo")'>
+                        Add Combo to Cart
                     </button>
                 </div>
             </div>
 
-            <div class="relative glass rounded-2xl overflow-hidden card-hover">
-                <img class="h-64 w-full object-cover opacity-90" src="p3.png">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
+            <!-- PERFUME COMBO -->
+            <div class="glass rounded-2xl p-6 product-card relative overflow-hidden card-hover">
 
-                <div class="absolute bottom-0 p-6">
-                    <h3 class="text-xl font-semibold mb-1">Turn ON</h3>
-                    <p class="text-gray-400 text-sm mb-4">Romantic jasmine & vanilla.</p>
-                    <button class="btn-gold px-6 py-2 rounded-xl text-sm" onclick='addToCart("Turn ON",599,"100ml")'>
-                        Order Now
+                <div class="absolute -top-20 -right-20 w-56 h-56 bg-emerald-600/30 blur-3xl rounded-full"></div>
+
+                <span
+                    class="absolute top-4 z-20 right-4 bg-gradient-to-r from-emerald-700 to-emerald-500 text-xs px-3 py-1 rounded-full tracking-wide">
+                    PERFUME COMBO
+                </span>
+
+                <div class="relative z-10">
+                    <img src="shop_imgs/combo/5.png" class="mx-auto h-48 object-contain">
+                </div>
+
+                <div class="relative z-10 text-center mt-4">
+                    <h3 class="font-semibold text-lg mb-1">
+                        2 Perfume <span class="gold">Combo</span>
+                    </h3>
+
+                    <p class="text-gray-400 text-xs mb-2">
+                        60ml each • Premium long-lasting perfume
+                    </p>
+
+                    <p class="text-gray-400 text-xs mb-4">
+                        No Doubt · Shades of ZN
+                    </p>
+
+                    <div class="flex justify-center items-center gap-3 mb-5">
+                        <span class="text-gray-500 line-through text-sm">₹798</span>
+                        <span class="gold text-xl font-bold">₹699</span>
+                        <span class="text-green-500 text-xs">SAVE ₹99</span>
+                    </div>
+
+                    <button class="btn-gold px-6 py-3 rounded-xl text-xs tracking-wide w-full"
+                        onclick='addToCart("2 Perfume Combo (60ml)",699,"Combo")'>
+                        Add Combo to Cart
                     </button>
                 </div>
             </div>
